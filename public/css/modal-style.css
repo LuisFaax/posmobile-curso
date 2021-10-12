@@ -1,0 +1,33 @@
+<style>
+        .contenedor {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 100vh;
+            background: #34495e;
+            transition: 0.3s all;
+            margin-right: 0px;
+            z-index: 1000;
+        }
+
+        .contenedor.activar {
+            margin-right: -200px;
+        }
+
+        .contenedor p {
+            border: 1px dotted #bfc9ca;
+            padding: 0.5rem;
+            margin: 0.5rem;
+            color: #bfc9ca;
+        }
+
+        .contenedor .btn {
+            position: absolute;
+            top: 2rem;
+            right: auto;
+            margin-right: 100%;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    </style>

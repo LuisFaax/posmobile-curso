@@ -1,0 +1,165 @@
+.modals {
+    /*
+    margin-top: -10000px;
+    margin-left: -10000px;
+    transition: visibility 0s linear .2s,opacity .2s 0s;
+    visibility: hidden;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    opacity: 0
+    */
+}
+
+.modals,.modals.modals-overlap {
+    background: rgba(0,0,0,.6509803921568628)
+}
+
+.modals.modals-static .modals-content {
+    -webkit-animation: modals-static-backdrop .3s infinite;
+    animation: modals-static-backdrop .3s infinite;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate
+}
+
+.modals.show {
+    transition: visibility 0s ease-in-out 0s,opacity .4s ease-in-out 0s;
+    visibility: visible;
+    opacity: 1
+}
+
+.modals.show>.modals-dialog {
+    margin-top: 4rem
+}
+
+.modals .modals-dialog {
+    width: 90%;
+    transition: margin-top .4s;
+    margin: -4rem auto 4rem
+}
+
+@media (min-width: 640px) {
+    .modals .modals-dialog {
+        width:460px
+    }
+
+    .modals .modals-dialog.modals-sm {
+        width: 300px
+    }
+
+    .modals .modals-dialog.modals-lg,.modals .modals-dialog.modals-xl {
+        width: 600px
+    }
+}
+
+@media (min-width: 1024px) {
+    .modals .modals-dialog.modals-xl {
+        width:900px
+    }
+}
+
+.modals .modals-dialog .modals-content {
+    position: relative
+}
+
+.modals .modals-dialog .modals-content>[data-dismiss=modals] {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-top: .75rem;
+    margin-right: .75rem
+}
+
+.modals.modals-slide-over {
+    overflow-x: hidden
+}
+
+.modals.modals-slide-over.modals-static .modals-content {
+    -webkit-animation: none;
+    animation: none
+}
+
+.modals.modals-slide-over.show {
+    transition: visibility 0s ease-in-out 0s,opacity .6s ease-in-out 0s;
+    visibility: visible;
+    opacity: 1
+}
+
+.modals.modals-slide-over.show>.modals-dialog {
+    margin-right: 0
+}
+
+@media (max-width: 639px) {
+    .modals.modals-slide-over.show>.modals-dialog .modals-content>[data-dismiss=modals] {
+        margin-left:-2.5rem
+    }
+}
+
+.modals.modals-slide-over .modals-dialog {
+    margin-right: -100%;
+    transition: margin-right .6s;
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+.modals.modals-slide-over .modals-dialog .modals-content {
+    min-height: 100vh;
+    border-radius: 0
+}
+
+.modals.modals-slide-over .modals-dialog .modals-content>[data-dismiss=modals] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: auto;
+    margin-top: 1rem;
+    margin-left: -3rem
+}
+
+.modals-content {
+    position: relative;
+    width: 100%;
+    border-radius: .25rem;
+    --tw-bg-opacity: 1;
+    background-color: rgba(255,255,255,var(--tw-bg-opacity));
+    --tw-shadow: 0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06);
+    box-shadow: var(--tw-ring-offset-shadow,0 0 transparent),var(--tw-ring-shadow,0 0 transparent),var(--tw-shadow)
+}
+
+.dark .modals-content {
+    --tw-bg-opacity: 1;
+    background-color: rgba(49,58,85,var(--tw-bg-opacity))
+}
+
+.modals-header {
+    display: flex;
+    align-items: center;
+    border-bottom-width: 1px;
+    --tw-border-opacity: 1;
+    border-color: rgba(237,242,247,var(--tw-border-opacity));
+    padding: .75rem 1.25rem
+}
+
+.dark .modals-header {
+    --tw-border-opacity: 1;
+    border-color: rgba(63,72,101,var(--tw-border-opacity))
+}
+
+.modals-body {
+    padding: 1.25rem
+}
+
+.modals-footer {
+    border-top-width: 1px;
+    --tw-border-opacity: 1;
+    border-color: rgba(237,242,247,var(--tw-border-opacity));
+    padding: .75rem 1.25rem;
+    text-align: right
+}
+
+.dark .modals-footer {
+    --tw-border-opacity: 1;
+    border-color: rgba(63,72,101,var(--tw-border-opacity))
+}
