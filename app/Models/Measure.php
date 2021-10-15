@@ -12,17 +12,15 @@ class Measure extends Model
     protected $fillable = ['name'];
 
 
-    // public static $rules = ['name' => 'required|min:3'];
-    //public static $rules = ['name' => 'required|min:3|unique:measures'];
+
     public static $messages = [
         'name.required' => 'Nombre requerido',
         'name.min' => 'El nombre debe tener al menos 3 caracteres',
         'name.max' => 'El nombre debe tener máximo 50 caracteres',
         'name.unique' => 'El nombre ya existe en sistema'
-
     ];
 
-    public static function rules($id)
+    public static function  rules($id)
     {
         if ($id <= 0) {
             return [
@@ -34,7 +32,6 @@ class Measure extends Model
             ];
         }
     }
-
 
     public function products()
     {
