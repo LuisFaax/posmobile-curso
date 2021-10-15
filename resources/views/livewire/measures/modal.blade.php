@@ -18,6 +18,7 @@
             </div>
 
             <div class="modal-footer text-right w-full absolute bottom-0">
+                <button onclick="closeModal()" class="btn btn-outline-secondary">Cancelar Esc</button>
                 <button wire:click.prevent="Store" wire:loading.attr="disabled" class="btn btn-primary" type="button">
                     <span wire:loading.remove>
                         Guardar F4

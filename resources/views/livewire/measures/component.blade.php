@@ -15,7 +15,7 @@
 
 
                 <div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
-                    <input wire:model="search" type="text" wire:keydown.enter.prevent class="form-control sm:w-40 xxl:w-full mt-2 sm:mt-0" placeholder="Buscar F8">
+                    <input wire:model="search" type="text" id="search" wire:keydown.enter.prevent class="form-control sm:w-40 xxl:w-full mt-2 sm:mt-0" placeholder="Buscar F8">
                 </div>
 
             </form>
@@ -25,8 +25,8 @@
                     <button class="dropdown-toggle btn btn-outline-secondary w-full sm:w-auto" aria-expanded="false"> <i class="fa fa-file w-4 h-4 mr-2"></i> Exportar </button>
                     <div class="dropdown-menu w-40">
                         <div class="dropdown-menu__content box dark:bg-dark-1 p-2">
-                            <a id="tabulator-export-csv" href="javascript:;" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"> <i class="fa fa-excel w-4 h-4 mr-2"></i> Exportar EXCEL </a>
-                            <a id="tabulator-export-json" href="javascript:;" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"> <i class="fa fa-pdf w-4 h-4 mr-2"></i> Exportar PDF </a>
+                            <a id="tabulator-export-csv" href="javascript:;" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"> <i class="far fa-file-excel w-4 h-4 mr-2"></i> Exportar EXCEL </a>
+                            <a id="tabulator-export-json" href="javascript:;" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"> <i class="far fa-file-pdf w-4 h-4 mr-2"></i> Exportar PDF </a>
 
                         </div>
                     </div>

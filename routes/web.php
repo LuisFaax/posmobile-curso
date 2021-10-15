@@ -1,20 +1,11 @@
 <?php
 
-use App\Models\Measure;
+
 use App\Http\Livewire\Blank;
+use App\Http\Livewire\Measures;
 use Illuminate\Support\Facades\Route;
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 
 Route::get('/', function () {
@@ -27,6 +18,6 @@ Route::get('/dashboard', function () {
 
 Route::get('blank', Blank::class);
 
-
-
 require __DIR__ . '/auth.php';
+
+Route::get('measures', Measures::class)->name('measures');

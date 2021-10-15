@@ -28,7 +28,7 @@ class Measures extends Component
     {
 
         if (strlen($this->search) > 0)
-            $info = Measure::where('name', 'like', "%{ $this->search }%")->orderBy('name', 'asc')->paginate($this->pagination);
+            $info = Measure::where('name', 'like', "%{$this->search}%")->orderBy('name', 'asc')->paginate($this->pagination);
         else
             $info = Measure::orderBy('name', 'asc')->paginate($this->pagination);
 
@@ -72,6 +72,8 @@ class Measures extends Component
 
     public function Store()
     {
+        sleep(2);
+
         $this->validate(Measure::rules($this->selected_id), Measure::$messages);
 
         $measure = Measure::updateOrCreate(
