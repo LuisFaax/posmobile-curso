@@ -1,6 +1,5 @@
 <script>
     document.addEventListener('livewire:load', function() {
-
         // leer el valor de una propiedad del back desde javascript        
         //var medida  = @this.name
         // asignar valor a nuestra propiedad pública desde javascript

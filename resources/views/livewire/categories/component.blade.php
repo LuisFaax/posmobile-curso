@@ -70,6 +70,6 @@
         </div>
     </div>
     <!-- END: HTML Table Data -->
-    @include('livewire.measures.modal')
+    @include('livewire.categories.modal')
     @include('components.script')
 </div>

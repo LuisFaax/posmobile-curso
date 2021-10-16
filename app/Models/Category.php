@@ -11,18 +11,6 @@ class Category extends Model
 
     protected $fillable = ['name'];
 
-    public static function rules($id)
-    {
-        if ($id <= 0) {
-            return [
-                'name' => 'required|min:3|max:50|string|unique:categories'
-            ];
-        } else {
-            return [
-                'name' => "required|min:3|max:50|string|unique:categories,name,{$id}"
-            ];
-        }
-    }
 
     public static $messages = [
         'name.required' => 'Nombre requerido',
@@ -31,7 +19,19 @@ class Category extends Model
         'name.unique' => 'El nombre ya existe en sistema'
     ];
 
-    // relationships
+    public static function  rules($id)
+    {
+        if ($id <= 0) {
+            return [
+                'name' => 'required|min:3|max:50|unique:categories'
+            ];
+        } else {
+            return [
+                'name' => "required|min:3|max:50|unique:categories,name,{$id}"
+            ];
+        }
+    }
+
     public function products()
     {
         return $this->hasMany(Product::class);

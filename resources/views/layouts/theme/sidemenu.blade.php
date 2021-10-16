@@ -16,13 +16,13 @@
         </li>
 
         <li>
-            <a href="side-menu-dark-inbox.html" class="side-menu">
+            <a href="{{ url('measures') }}" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="package"></i> </div>
                 <div class="side-menu__title"> Medidas </div>
             </a>
         </li>
         <li>
-            <a href="side-menu-dark-file-manager.html" class="side-menu">
+            <a href="{{ route('categories') }}" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="layers"></i> </div>
                 <div class="side-menu__title"> Categorias </div>
             </a>
