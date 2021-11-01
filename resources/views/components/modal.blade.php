@@ -4,7 +4,9 @@
 
             <!-- BEGIN: Modal Header -->
             <div class="modal-header">
-                <h2 class="font-medium text-base mr-auto">Gestionar Usuario</h2>
+                <h2 class="font-medium text-base mr-auto">
+                    {{ $title }}
+                </h2>
             </div>
             <!-- END: Modal Header -->
 
