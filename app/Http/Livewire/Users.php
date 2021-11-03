@@ -7,14 +7,16 @@ use App\Models\Image;
 use Livewire\Component;
 use App\Models\Customer;
 use Livewire\WithPagination;
-
+use Livewire\WithFileUploads;
 
 class Users extends Component
 {
     use WithPagination;
+    use WithFileUploads;
+
     public $name = '', $phone = '', $status = 'Active', $email = '', $password = '', $hiddenpwd = '', $address = '', $photo = '', $selected_id = 0;
     public $componentName = 'Usuarios', $search = '';
-    private $pagination = 3;
+    private $pagination = 2;
 
     public function paginationView()
     {
@@ -48,7 +50,7 @@ class Users extends Component
 
     public function render()
     {
-        if (strlen($this->seearch) > 0)
+        if (strlen($this->search) > 0)
             $info = User::whereNotIn('id', Customer::select('user_id'))
                 ->select('users.*')->orderBy('name', 'asc')
                 ->where('name', 'like', "%{$this->search}%")

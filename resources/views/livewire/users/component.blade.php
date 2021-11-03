@@ -39,10 +39,12 @@
                             <div class="mr-auto">{{ $u->phone ?? '-' }}</div>
                         </div>
                     </div>
-                    <button class="btn btn-primary py-1 px-2 mr-2" title='Eliminar usuarios'>
+                    @if($u->sales->count() <1 ) <button wire:click.prevent="$emit('deleteRow',{{ $u->id }})" class="btn btn-primary py-1 px-2 mr-2" title='Eliminar usuarios'>
                         <i class='fas fa-trash'></i>
-                    </button>
-                    <button class="btn btn-outline-secondary py-1 px-2" title='Editar Info'><i class='fas fa-edit'></i></button>
+                        </button>
+                        @endif
+
+                        <button wire:click.prevent="Edit({{ $u->id }})" class="btn btn-outline-secondary py-1 px-2" title='Editar Info'><i class='fas fa-edit'></i></button>
                 </div>
             </div>
         </div>

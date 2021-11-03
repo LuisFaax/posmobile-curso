@@ -47,7 +47,7 @@ class User extends Authenticatable
         if ($id <= 0) {
             return [
                 'name' => 'required|min:3|max:50|string|unique:users',
-                'phone' => 'min:10|max:10|string',
+                'phone' => 'min:10|max:10|nullable',
                 'email' => 'required|email|max:255|unique:users',
                 'password' => ['required', 'min:3', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/'],
                 'status' => Rule::in(['Active', 'Locked']),
@@ -56,7 +56,7 @@ class User extends Authenticatable
         } else {
             return [
                 'name' => "required|min:3|max:50|string|unique:categories,name,{$id}",
-                'phone' => 'min:10|max:10|string',
+                'phone' => 'min:10|max:10|nullable',
                 'email' => "required|email|max:255|unique:users,email,{$id}",
                 'status' => Rule::in(['Active', 'Locked']),
                 'address' => 'max:255'
