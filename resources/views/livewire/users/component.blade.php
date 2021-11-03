@@ -11,7 +11,7 @@
 
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-gray-700 dark:text-gray-300">
-                    <input wire:model="search" type="text" class="form-control w-56 box pr-10 placeholder-theme-13" placeholder="Buscar...">
+                    <input wire:model="search" id="search" type="text" class="form-control w-56 box pr-10 placeholder-theme-13" placeholder="Buscar F8">
                     <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-feather="search"></i>
                 </div>
             </div>
@@ -23,7 +23,7 @@
             <div class="box">
                 <div class="flex flex-col lg:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
                     <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
-                        <img alt="Tinker Tailwind HTML Admin Template" class="rounded-full" src="dist/images/profile-13.jpg">
+                        <img alt="avatar" class="rounded-full" src="{{ $u->image }}">
                     </div>
                     <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
                         <a href="" class="font-medium">{{ $u->name }}</a>
