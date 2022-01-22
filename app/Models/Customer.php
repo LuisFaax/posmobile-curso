@@ -19,7 +19,7 @@ class Customer extends Model
 
     public function credit_purchasings()
     {
-        return $this->hasMany(Sale::class)->where('status', 'Pending');
+        return $this->hasMany(Sale::class)->where('type', 'CREDIT');
     }
 
     public function user()
