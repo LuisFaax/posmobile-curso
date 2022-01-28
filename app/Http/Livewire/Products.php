@@ -42,7 +42,7 @@ class Products extends Component
         }
 
 
-        return view('livewire.products', [
+        return view('livewire.products.component', [
             'data' => $info,
             'categories' => Category::orderBy('name', 'asc')->get(),
             'measures' => Measure::orderBy('name', 'asc')->get()
@@ -96,7 +96,7 @@ class Products extends Component
 
     public function Store()
     {
-        sleep(2);
+        sleep(1);
 
         $this->validate(Product::rules($this->selected_id), Product::$messages);
 
@@ -126,7 +126,7 @@ class Products extends Component
                     }
                 });
 
-                // eliminar la relaciones
+                // eliminar las relaciones
                 $product->images()->delete();
             }
 
@@ -143,11 +143,10 @@ class Products extends Component
                 ]);
 
                 // guardar relacion
-                $product->images()->save();
+                $product->images()->save($img);
             }
-
-            $this->noty($this->selected_id > 0 ? 'Producto Actualizado' : 'Producto Registrado');
         }
+        $this->noty($this->selected_id > 0 ? 'Producto Actualizado' : 'Producto Registrado');
     }
 
 

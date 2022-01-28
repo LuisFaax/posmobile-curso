@@ -85,8 +85,8 @@ class Product extends Model
                 'cost' => 'required',
                 'price1' => 'required|numeric',
                 'price2' => 'required|numeric',
-                'stock' => 'required|integer',
-                'minstock' => 'required|integer',
+                'stock' => 'required',
+                'minstock' => 'required',
                 'categoryid' => 'required|not_in:Elegir',
                 'measureid' => 'required|not_in:Elegir',
             ];
@@ -98,8 +98,8 @@ class Product extends Model
                 'cost' => 'required',
                 'price1' => 'required|numeric',
                 'price2' => 'required|numeric',
-                'stock' => 'required|integer',
-                'minstock' => 'required|integer',
+                'stock' => 'required',
+                'minstock' => 'required',
                 'categoryid' => 'required|not_in:Elegir',
                 'measureid' => 'required|not_in:Elegir',
             ];
