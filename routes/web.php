@@ -8,6 +8,7 @@ use App\Http\Livewire\Measures;
 use App\Http\Livewire\Customers;
 use App\Http\Livewire\Categories;
 use App\Http\Livewire\Products;
+use App\Http\Livewire\Sales;
 use Illuminate\Support\Facades\Route;
 
 
@@ -30,3 +31,4 @@ Route::get('categories', Categories::class)->name('categories');
 Route::get('users', Users::class)->name('users');
 Route::get('customers', Customers::class)->name('customers');
 Route::get('products', Products::class)->name('products');
+Route::get('sales', Sales::class)->name('sales');
