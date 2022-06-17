@@ -66,6 +66,11 @@ class Product extends Model
     }
 
 
+    public function getCurrentStockAttribute()
+    {
+        return $this->stock;
+    }
+
 
 
 

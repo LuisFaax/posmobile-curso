@@ -12,26 +12,26 @@
      </div>
 
      <div class="intro-y grid grid-cols-12 gap-3 sm:gap-4 mt-2">
-
+         @forelse($productsList as $product)
 
          <div class="intro-y col-span-6 sm:col-span-4 md:col-span-3 xxl:col-span-2">
-             <div class="file box rounded-md px-5 pt-8 pb-5 px-3 sm:px-5 relative zoom-in">
+             <div wire:click="add2Cart({{ $product->id }})" class="file box rounded-md px-5 pt-8 pb-5 px-3 sm:px-5 relative zoom-in">
 
                  <a href="javascript:;" class="w-3/5 file__icon file__icon--image mx-auto">
                      <div class="file__icon--image__preview image-fit">
-                         <img alt="img" src="">
+                         <img alt="img" src="{{ asset($product->photo) }}">
                      </div>
                  </a>
-                 <a href="javascript:;" class="block font-medium mt-4 text-center truncate"></a>
-                 <h1 class="text-center"></h1>
+                 <a href="javascript:;" class="block font-medium mt-4 text-center truncate">{{ $product->name }}</a>
+                 <h1 class="text-center">${{ number_format($product->price1,2) }}</h1>
              </div>
          </div>
-         <!--
+         @empty
          <div class="col-span-12">
              <h1 class="text-center text-theme-6 w-full">SIN RESULTADOS</h1>
-         </div>-->
+         </div>
 
-
+         @endforelse
 
      </div>
  </div>

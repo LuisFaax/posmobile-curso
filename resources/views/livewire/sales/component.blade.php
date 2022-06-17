@@ -30,7 +30,59 @@
                                      </thead>
                                      <tbody>
 
+                                         @forelse($contentCart as $item)
+                                         <tr class="bg-gray-200 dark:bg-dark-1 text-lg">
 
+                                             <td class="border-b whitespace-nowrap" width="10%">
+                                                 <div class="w-10 h-10 image-fit">
+                                                     <img src="{{ asset($item->photo) }}" alt="photo" class="w-full rounded-lg" data-action="zoom">
+                                                 </div>
+                                             </td>
+
+                                             <td class="border-d dark:border-dark-5">
+                                                 {{ strtoupper($item->name) }}
+                                                 <div>
+                                                     <small class="text-theme-29">
+                                                         stock: {{ $item->currentStock - $item->qty }}
+                                                     </small>
+                                                 </div>
+                                             </td>
+
+                                             <td class="border-d dark:border-dark-5 text-center">
+                                                 ${{ number_format($item->price1,2) }}
+                                             </td>
+
+                                             <td class="border-d dark:border-dark-5 text-center">
+                                                 <div class="input-group mt-2">
+                                                     <input id="r{{$item->id}}" wire:keydown.enter="updateQty({{$item->id}}, $event.target.value)" wire:change="updateQty({{$item->id}}, $event.target.value)" value="{{ $item->qty }}" type="number" class="form-control text-center">
+                                                 </div>
+                                             </td>
+
+                                             <td class="border-d dark:border-dark-5 text-center">
+                                                 ${{ number_format($item->price1 * $item->qty,2) }}
+                                             </td>
+
+                                             <td>
+                                                 <div class="inline-flex" role="group" style="font-size:1.2rem!important">
+                                                     <button wire:click.prevent="removeFromCart({{ $item->id }})" class="btn btn-danger">
+                                                         <i class="fas fa-trash"></i>
+                                                     </button>
+                                                     <button wire:click.prevent="decreaseQty({{ $item->id }})" class="btn btn-warning ml-4">
+                                                         <i class="fas fa-minus"></i>
+                                                     </button>
+                                                     <button wire:click.prevent="increaseQty({{ $item->id }})" class="btn btn-success ml-4">
+                                                         <i class="fas fa-plus"></i>
+                                                     </button>
+                                                 </div>
+                                             </td>
+
+
+                                         </tr>
+                                         @empty
+                                         <tr>
+                                             <td colspan="5" class="text-center">AGREGA PRODUCTOS AL CARRITO</td>
+                                         </tr>
+                                         @endforelse
                                      </tbody>
                                  </table>
                              </div>

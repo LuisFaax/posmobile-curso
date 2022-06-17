@@ -68,7 +68,7 @@ trait CartTrait
     public function decreaseQtyCart($id)
     {
         $cart = new Cart;
-        $cart->decreaseQtyCart($id);
+        $cart->decreaseQuantity($id);
         $this->noty("CANTIDAD ACTUALIZADA");
     }
 
@@ -81,6 +81,6 @@ trait CartTrait
     public function clearCart()
     {
         $cart = new Cart;
-        $cart->crear();
+        $cart->clear();
     }
 }
