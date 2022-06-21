@@ -10,11 +10,13 @@ use App\Models\Customer;
 use App\Models\Payment;
 use App\Models\SaleDetail;
 use App\Traits\CartTrait;
+use App\Traits\printTrait;
 use Illuminate\Support\Facades\DB;
 
 class Sales extends Component
 {
     use CartTrait;
+    use printTrait;
 
     public $tabProducts = true, $tabSearch = false, $customerSelected = 'Seleccionar Cliente F8';
     public $searchByName, $itemsCart = 0, $totalCart = 0, $contentCart, $saleType = 'CASH', $amount, $statusSale = 'Paid';
@@ -136,7 +138,7 @@ class Sales extends Component
 
         try {
             if ($this->customerSelected == 'Seleccionar Cliente F8') {
-                $this->customer_id = User::join('customers as c', 'c.customer_id', 'users.id')
+                $this->customer_id = User::join('customers as c', 'c.id', 'users.id')
                     ->where('name', 'Publico General')
                     ->select('c.id')
                     ->get()->pluck('id')[0];
@@ -148,7 +150,7 @@ class Sales extends Component
                 'customer_id' => $this->customer_id,
                 'items' => $this->getItemsCart(),
                 'total' => $this->getTotalCart(),
-                'discount' => $this->discount,
+                'discount' => $this->discount ?? 0,
                 'status' => $this->statusSale,
                 'mode' => 'Web',
                 'type' => $this->saleType
@@ -186,6 +188,7 @@ class Sales extends Component
             // sale print
 
             if ($print) $this->saleTicket($sale);
+
             $this->noty('Venta registrada', 'noty', 'success', 'modalSaveSale');
         } catch (\Throwable $e) {
             DB::rollBack();
