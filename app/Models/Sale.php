@@ -32,7 +32,7 @@ class Sale extends Model
 
     public function getPendingPayAttribute()
     {
-        if ($this->tyope == 'CASH') return "0.00";
+        if ($this->type == 'CASH') return "0.00";
 
         $pays = $this->pays->sum('amount');
         $total = $this->total;

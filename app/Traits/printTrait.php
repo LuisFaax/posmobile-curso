@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use Carbon\Carbon;
 use App\Models\Sale;
+use App\Models\Payment;
 use Mike42\Escpos\Printer;
 use Mike42\Escpos\EscposImage;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
@@ -11,9 +12,46 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 trait printTrait
 {
 
+    // imprimir recibo de la venta
+    public function payTicket(Payment $payment)
+    {
+        $printerName = "80mm";
+        $connector = new WindowsPrintConnector($printerName);
+        $printer = new Printer($connector);
+
+        $printer->setJustification(Printer::JUSTIFY_CENTER);
+        $logo = EscposImage::load("logo.png");
+        $printer->bitImage($logo);
+        $printer->setTextSize(3, 3);
+        $printer->text("POSMOBILE\n");
+        $printer->selectPrintMode();
+        $printer->text("-Recibo de Pago-\n");
+        $printer->feed();
+
+        $printer->setJustification(Printer::JUSTIFY_LEFT);
+        $printer->selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
+        $printer->text("FOLIO: " . str_pad($payment->id, 6, "0", STR_PAD_LEFT) . "\n");
+        $printer->text("FECHA: " . Carbon::parse($payment->created_at)->format('d/m/Y h:m') . "\n");
+        $printer->text("MONTO: $" . number_format($payment->amount, 2) . "\n");
+        $debe = number_format($payment->sale->total - $payment->sale->pays->sum('amount'), 2);
+        $printer->text("ADEUDO: $" . $debe . "\n");
+        $printer->text("CLIENTE: " . $payment->sale->customer->user->name . "\n");
+        $printer->feed(2);
+
+        /* Footer */
+        $printer->setJustification(Printer::JUSTIFY_CENTER);
+        $printer->selectPrintMode();
+        $printer->text("luisfax.com\n");
+        $printer->feed(3);
+
+        $printer->cut();
+        $printer->close();
+    }
+
+
     public function saleTicket(Sale $sale)
     {
-        $printerName = 'EPSON-T20III';
+        $printerName = '80mm';
         $connector = new WindowsPrintConnector($printerName);
         $printer = new Printer($connector);
         $printer->setJustification(Printer::JUSTIFY_CENTER);
